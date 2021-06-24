@@ -14,13 +14,22 @@
     "baseUrl": ".",
     "paths": {
       "@controllers/*": [
-        "./src/controllers"
+        "./src/controllers/*"
       ],
-      "@models/*": [
-        "./src/models"
+      "@entities/*": [
+        "./src/entities/*"
       ],
       "@services/*": [
-        "./src/services"
+        "./src/services/*"
+      ],
+      "@repositories/*": [
+        "./src/repositories/*"
+      ],
+      "@interfaces/*": [
+        "./src/interfaces/*"
+      ],
+      "@config/*": [
+        "./src/config/*"
       ]
     }
   }
