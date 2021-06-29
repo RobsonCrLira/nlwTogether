@@ -26,8 +26,6 @@ const createTagController = new CreateTagController();
 const listTagsController = new ListTagsControllers();
 
 routes.post("/login", authenticateUserController.handle);
-routes.post("/users", createUserController.handle);
-routes.get("/users", listUsersController.handle);
 
 routes.post(
   "/tags",
@@ -42,6 +40,9 @@ routes.post(
   ensureAuthenticate,
   creatComplimentController.handle
 );
+
+routes.post("/users", createUserController.handle);
+routes.get("/users", listUsersController.handle);
 routes.get(
   "/users/compliments/send",
   ensureAuthenticate,

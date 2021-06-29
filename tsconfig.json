@@ -39,6 +39,9 @@
       ],
       "@types/*": [
         "./src/@types/*"
+      ],
+      "@errors/*": [
+        "./src/errors/*"
       ]
     }
   }

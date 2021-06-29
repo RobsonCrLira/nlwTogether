@@ -1,4 +1,5 @@
 import auth from "@config/auth";
+import { AppError } from "@errors/AppError";
 import { IPayload } from "@interfaces/IPayload";
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
@@ -11,7 +12,7 @@ export function ensureAuthenticate(
   const authToken = request.headers.authorization;
 
   if (!authToken) {
-    return response.status(401).end();
+    throw new AppError("Unauthorized", 401);
   }
   const [, token] = authToken.split(" ");
 
@@ -20,6 +21,6 @@ export function ensureAuthenticate(
     request.user_id = sub;
     return next();
   } catch (error) {
-    return response.status(401).end();
+    throw new AppError("Unauthorized", 401);
   }
 }

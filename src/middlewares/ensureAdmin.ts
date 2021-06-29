@@ -1,3 +1,4 @@
+import { AppError } from "@errors/AppError";
 import { UsersRepository } from "@user/UsersRepository";
 import { NextFunction, Request, Response } from "express";
 import { getCustomRepository } from "typeorm";
@@ -16,7 +17,5 @@ export async function ensureAdmin(
   if (admin) {
     return next();
   }
-  return response.status(401).json({
-    error: "Unauthorized",
-  });
+  throw new AppError("Unauthorized", 401);
 }
