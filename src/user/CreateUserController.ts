@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { CreateUsersServices } from "@services/CreateUsersServices";
+import { CreateUserServices } from "./CreateUserService";
 
 class CreateUserController {
   async handle(request: Request, response: Response) {
     const { name, email, password, admin } = request.body;
 
-    const createUserServices = new CreateUsersServices();
+    const createUserServices = new CreateUserServices();
 
     const user = await createUserServices.execute({
       name,

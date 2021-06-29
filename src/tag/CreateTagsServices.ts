@@ -1,6 +1,6 @@
 import { Tag } from "@entities/Tag";
-import { TagRepository } from "@repositories/TagsRepository";
 import { getCustomRepository, Repository } from "typeorm";
+import { TagRepository } from "./TagsRepository";
 
 class CreateTagsServices {
   private tagRepository: Repository<Tag>;
@@ -16,7 +16,7 @@ class CreateTagsServices {
     const tagAlreadyExists = await this.tagRepository.findOne({ name });
 
     if (tagAlreadyExists) {
-      throw new Error(`Tag already exists ${tagAlreadyExists}`);
+      throw new Error("Tag already exists!");
     }
 
     const tag = this.tagRepository.create({ name });

@@ -12,24 +12,33 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
+    "typeRoots": [
+      "./src/@types"
+    ],
     "paths": {
-      "@controllers/*": [
-        "./src/controllers/*"
+      "@tag/*": [
+        "./src/tag/*"
       ],
-      "@entities/*": [
-        "./src/entities/*"
+      "@user/*": [
+        "./src/user/*"
       ],
-      "@services/*": [
-        "./src/services/*"
-      ],
-      "@repositories/*": [
-        "./src/repositories/*"
+      "@compliment/*": [
+        "./src/compliment/*"
       ],
       "@interfaces/*": [
         "./src/interfaces/*"
       ],
+      "@entities/*": [
+        "./src/entities/*"
+      ],
+      "@tagCompliments/*": [
+        "./src/tagCompliments/*"
+      ],
       "@config/*": [
         "./src/config/*"
+      ],
+      "@types/*": [
+        "./src/@types/*"
       ]
     }
   }

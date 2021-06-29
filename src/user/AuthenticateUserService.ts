@@ -1,19 +1,14 @@
-import { User } from "@entities/User";
-import { IAuthenticateRequest } from "@interfaces/IAuthenticateRequest";
-import { UsersRepositories } from "@repositories/UsersRepository";
-import { compare } from "bcryptjs";
-import { getCustomRepository, Repository } from "typeorm";
-import { sign } from "jsonwebtoken";
 import auth from "@config/auth";
+import { IAuthenticateRequest } from "@interfaces/IAuthenticateRequest";
+import { compare } from "bcryptjs";
+import { sign } from "jsonwebtoken";
+import { getCustomRepository } from "typeorm";
+import { UsersRepository } from "./UsersRepository";
 
 class AuthenticateUserServices {
-  private usersRepository: Repository<User>;
-
-  constructor() {
-    this.usersRepository = getCustomRepository(UsersRepositories);
-  }
   async execute({ email, password }: IAuthenticateRequest) {
-    const user = await this.usersRepository.findOne({ email });
+    const usersRepository = getCustomRepository(UsersRepository);
+    const user = await usersRepository.findOne({ email });
     if (!user) {
       throw new Error("Email/Password Incorrect !");
     }

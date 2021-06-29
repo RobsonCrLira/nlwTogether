@@ -1,16 +1,16 @@
 import { Compliment } from "@entities/Compliment";
 import { User } from "@entities/User";
 import { IComplimentRequest } from "@interfaces/IComplimentRequest";
-import { ComplimentsRepository } from "@repositories/ComplimentsRepository";
-import { UsersRepositories } from "@repositories/UsersRepository";
+import { UsersRepository } from "@user/UsersRepository";
 import { getCustomRepository, Repository } from "typeorm";
+import { ComplimentsRepository } from "./ComplimentsRepository";
 
 class CreateComplimentServices {
   private complimentRepository: Repository<Compliment>;
   private usersRepository: Repository<User>;
 
   constructor() {
-    this.usersRepository = getCustomRepository(UsersRepositories);
+    this.usersRepository = getCustomRepository(UsersRepository);
     this.complimentRepository = getCustomRepository(ComplimentsRepository);
   }
   async execute({
