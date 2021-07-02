@@ -18,6 +18,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Typescript](https://www.typescriptlang.org/)
 - [Express](https://expressjs.com/pt-br/)
 - [JSONWebToken](https://github.com/auth0/node-jsonwebtoken#readme)
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 - [YUP](https://github.com/jquense/yup)
 - [Swagger](https://swagger.io/)
 
