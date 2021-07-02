@@ -2,7 +2,6 @@
 
 [x] Erros Customizados
 [x] Validação de parametros passado pelo usuario
-[] Documentação da api com swagger
+[x] Documentação da api com swagger (esta com problemas de execução)
 [] Trocar de sqlite para mongoDB()
-[] Personalizar README.md
-[] Envio do usuario de um usuario
+[x] Personalizar README.md

@@ -18,8 +18,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Typescript](https://www.typescriptlang.org/)
 - [Express](https://expressjs.com/pt-br/)
 - [JSONWebToken](https://github.com/auth0/node-jsonwebtoken#readme)
-- [YUP]()
-- [Swagger]()
+- [YUP](https://github.com/jquense/yup)
+- [Swagger](https://swagger.io/)
 
 ## 💻 Projeto
 
@@ -30,9 +30,10 @@ Valoriza é uma plataforma para promover o reconhecimento entre companheiros de 
 - Clone o repositório
 - Rode `yarn` para baixar as dependências
 - Rode `yarn typeorm migration:run` para criar as tabelas do banco de dados.
+- Crie um arquivo `.env` baseado no `.env.example`
 - Rode o `yarn dev` para iniciar a aplicação.
 
-Por fim, a aplicação estará disponível em `http://localhost:3000`
+Por fim, a aplicação estará disponível em `http://localhost:3000` caso tenha escolhido a porta **3000** se não ele estará disponivel na porta que você denominou no arquivo `.env`
 
 ## 📄 Licença
 
@@ -40,4 +41,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ---
 
-Feito com 💜 &nbsp;by [Rocketseat](https://rocketseat.com.br/) 👋🏻 &nbsp;[Participe da nossa comunidade!](https://discord.gg/gKUVrzrPrU)
+Feito com 💜 &nbsp;by [Rocketseat](https://rocketseat.com.br/) e modificado por [Robson Cristian de Lira](https://github.com/RobsonCrLira) 👋🏻 &nbsp;[Participe da nossa comunidade!](https://discord.gg/gKUVrzrPrU)
