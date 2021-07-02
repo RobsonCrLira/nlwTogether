@@ -40,13 +40,13 @@ class CreateComplimentServices {
     }
 
     if (user_sender === user_receiver) {
-      throw new AppError("Incorrect  User Receiver");
+      throw new AppError("Incorrect  User Receiver!");
     }
 
     const userReceiver = await this.usersRepository.findOne(user_receiver);
 
     if (!userReceiver) {
-      throw new AppError("User Receiver does not exists");
+      throw new AppError("User Receiver does not exists!", 404);
     }
 
     const compliment = this.complimentRepository.create({

@@ -1,0 +1,374 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Api para enviar elogios",
+    "description": "Esta api o usuário pode enviar e receber elogios a de seus amigos ou de outros usuarios",
+    "termsOfService": "Não possui",
+    "contact": {
+      "email": "robson.crlira@hotmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/nlw06"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login do usuario",
+        "description": "Rota de autenticação do usuario",
+        "tags": ["Login"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              },
+              "examples": {
+                "login": {
+                  "value": {
+                    "email": "robson@gmail.com",
+                    "password": "12345678"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Login"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Email/Password Incorrect !"
+          },
+          "500": {
+            "description": " Internal Server Error"
+          }
+        }
+      }
+    },
+    "/tags": {
+      "post": {
+        "summary": "Criação de um elogio",
+        "description": "Rota que faz a criação de um novo elogio para usuarios",
+        "tags": ["Tag"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              },
+              "examples": {
+                "companheiro": {
+                  "value": { "tag": "companheiro" }
+                },
+                "amigo": {
+                  "value": { "tag": "amigo" }
+                },
+                "irmão": {
+                  "value": { "tag": "irmão" }
+                },
+                "carinhoso": {
+                  "value": { "tag": "carinhoso" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Tag already exists!"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": " Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca de um elogio",
+        "description": "Rota que faz a busca de todos os registro elogios",
+        "tags": ["Tag"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": " Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "Cadastro de usuario",
+        "description": "Rota de cadastro de usuario",
+        "tags": ["User"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/User"
+              },
+              "examples": {
+                "robson": {
+                  "value": {
+                    "name": "robson",
+                    "email": "robson@gmail.com",
+                    "password": "12345678"
+                  }
+                },
+                "admin": {
+                  "value": {
+                    "name": "admin",
+                    "email": "admin@gmail.com",
+                    "password": "12345678",
+                    "admin": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Email/Password Incorrect !"
+          },
+          "500": {
+            "description": " Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Cadastro de usuario",
+        "description": "Rota de busca de usuario",
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Email/Password Incorrect !"
+          },
+          "500": {
+            "description": " Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/compliments/send": {
+      "post": {
+        "summary": "Busca de elogio(enviado)",
+        "description": "Rota que busca todos os elegoiod enviados do usuario logado",
+        "tags": ["Compliments"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Compliments"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "!"
+          },
+          "500": {
+            "description": " Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/compliments/receive": {
+      "post": {
+        "summary": "Busca de elogio(recebido)",
+        "description": "Rota que busca todos os elogios recebidos do usuario logado",
+        "tags": ["Compliments"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Compliments"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "!"
+          },
+          "500": {
+            "description": " Internal Server Error"
+          }
+        }
+      }
+    },
+    "/compliments": {
+      "post": {
+        "summary": "Envio de elogios",
+        "description": "Rota de envio de um usuario para outro",
+        "tags": ["Compliments"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schema/Compliments"
+              },
+              "examples": {
+                "nlw06": {
+                  "value": {
+                    "tag_id": "aa6f374d-46c4-49de-b992-eee04b4fdb17",
+                    "user_receiver": "bf026540-4078-40d0-908b-8054ad21c2bs",
+                    "message": "NLW Perfeita :D"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Compliments"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Incorrect  User Receiver!"
+          },
+          "404": {
+            "description": "User Receiver does not exists!"
+          },
+          "500": {
+            "description": " Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "admin": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Compliments": {
+        "type": "object",
+        "properties": {
+          "tag_id": {
+            "type": "string"
+          },
+          "user_receiver": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
