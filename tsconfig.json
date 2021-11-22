@@ -13,6 +13,10 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     // "baseUrl": ".",
+    "types": [
+      "jest",
+      "node"
+    ],
     "typeRoots": [
       "./src/@types"
     ],
@@ -45,5 +49,8 @@
         "./src/errors/*"
       ]
     }
-  }
+  },
+  "exclude": [
+    "**/**/*.spec.ts"
+  ]
 }
